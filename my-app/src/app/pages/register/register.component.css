@@ -1,0 +1,13 @@
+.Sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign_in_text{
+    text-decoration: none;
+    cursor: pointer;
+}
+.sign_in_text > h1 {
+   
+    font-size: 20px;
+}

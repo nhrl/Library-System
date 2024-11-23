@@ -1,0 +1,78 @@
+<div class="main">
+    <div class="button" [routerLink]="['/dashboard/add-books']"  id="Open">Add Book</div>
+    <div *ngIf="isDeleted" class="alert alert-success alert-dismissible fade show">
+      <strong>Success!</strong> Book has been deleted successfully.
+      <button type="button" (click)="closeMessage()" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+</div>
+<main class="table-container">
+   <div class="wrapper">
+    <div *ngIf="isLoad;else table"  class="load_container">
+        <app-loader></app-loader>
+    </div>
+    <ng-template #table>
+        <table>
+          <tr class="row1">
+              <td class="col1">ID</td>
+              <td class="col2">Title</td>
+              <td class="col3">Publisher</td>
+              <td class="col4">Author</td>
+              <td class="col5">Year publish</td>
+              <td class="col6">Volume</td>
+          </tr>
+            <tr  *ngFor="let data of books">
+              <td class="data">{{data.id}}</td>
+              <td class="data">{{data.title}}</td>
+              <td class="data">{{data.publisher}}</td>
+              <td class="data">{{data.author}}</td>
+              <td class="data">{{data.year_publish}}</td>
+              <td class="data">{{data.volume}}</td>
+              <td class="edit" id="editshow">
+                <button type="button" class="btn btn-primary btn-sm" (click)="displayUpdateBook(data.id)">Edit</button>
+              </td>
+              <td class="delete">
+                <form>
+                  <input type="button" class="btn-delete" value="Delete" (click)="showDeleteBook(data.id)">
+                </form>
+              </td>
+            </tr>
+      </table>
+    </ng-template> 
+   </div>
+</main>
+<div *ngIf="deleteMessage" class="confirmation_Message">
+  <div class="load_container" *ngIf="confirmLoader;else showDeleteBook">
+      <app-loader></app-loader>
+  </div>
+  <ng-template #showDeleteBook>
+    <div class="alert alert-info alert-dismissible fade show">
+      <strong>Info!</strong> Do you want to delete this book?.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="hideMessage()"></button>
+    </div>
+    <div class="details_container">
+      <p>Title:</p>
+      <p>{{title}}</p>
+    </div>
+    <div class="details_container">
+      <p>Publisher:</p>
+      <p>{{publisher}}</p>
+    </div>
+    <div class="details_container">
+      <p>Author:</p>
+      <p>{{author}}</p>
+    </div>
+    <div class="details_container">
+      <p>Year Publish:</p>
+      <p>{{year_pub}}</p>
+    </div>
+    <div class="details_container">
+      <p>Volume:</p>
+      <p>{{volume}}</p>
+    </div>
+    <div>
+      <div class="btn-container">
+        <a><div id="editclose" class="btn btn-primary mt-3" (click)="deleteBook()">Delete</div></a>
+      </div>
+    </div>
+  </ng-template>
+</div>

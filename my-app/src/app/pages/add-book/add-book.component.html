@@ -1,0 +1,51 @@
+<div class="add-con">
+    <div id="addfrm" class="add-container p-3">
+      <div *ngIf="isLoading;else addData" class="load_container">
+        <app-loader></app-loader>
+      </div>
+      <ng-template #addData>
+        <div *ngIf="success;else form_display" class="success">
+          <div class="alert alert-success alert-dismissible fade show">
+            <strong>Success!</strong> New book has been added successfully.
+          </div>
+          <div class="btn-container">
+            <button type="submit" class="btn btn-primary mt-3" (click)="reload()">Add Book</button>
+            <div id="close" class="btn btn-primary mt-3" [routerLink]="['/dashboard/books']"  >Close</div>
+          </div>
+        </div>
+        <ng-template #form_display>
+          <form (ngSubmit)="insertBook()">
+            <div class="form-group">
+                <label>Title</label>
+                <input [(ngModel)]="title" name="title" type="text" class="form-control" placeholder="Enter Title">
+                <span *ngIf="nError" class="text-danger">{{errorMessage}}</span>
+              </div>
+              <div class="form-group">
+                <label >Publisher</label>
+                <input [(ngModel)]="publish" name="publish" type="text" class="form-control"  placeholder="Publisher">
+                <span *ngIf="pError" class="text-danger">{{errorMessage}}</span>
+              </div>
+              <div class="form-group">
+                <label >Authors</label>
+                <input [(ngModel)]="author" name="author" type="text" class="form-control" placeholder="Authors">
+                <span *ngIf="aError" class="text-danger">{{errorMessage}}</span>
+              </div>
+              <div class="form-group">
+                <label >Year Publish</label>
+                <input [(ngModel)]="year_pub" name="year_pub" type="text" class="form-control" placeholder="Year Publish">
+                <span *ngIf="yError" class="text-danger">{{errorMessage}}</span>
+              </div>
+              <div class="form-group">
+                <label >Volume</label>
+                <input [(ngModel)]="volume" name="volume" type="text" class="form-control" placeholder="Volume">
+                <span *ngIf="vError" class="text-danger">{{errorMessage}}</span>
+              </div>
+              <div class="btn-container">
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <div id="close" class="btn btn-primary mt-3" [routerLink]="['/dashboard/books']"  >Close</div>
+              </div>
+        </form>
+        </ng-template>
+      </ng-template>
+    </div>
+</div>

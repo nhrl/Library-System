@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+          <div class="card-img-left d-none d-md-flex">
+            <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="name" name="name" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                <label for="floatingInputUsername">Name</label>
+                <span *ngIf="errors.errname"></span>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" [(ngModel)]="username"  name="username" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Username</label>
+              </div>
+
+              <hr>
+
+              <div class="form-floating mb-3">
+                <input type="password" [(ngModel)]="password" name="password" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password">
+                <label for="floatingPasswordConfirm">Password</label>
+              </div>
+
+              <div class="d-grid mb-2">
+                <button type="submit" class="btn btn-lg btn-primary btn-login fw-bold text-uppercase">Register</button>
+              </div>
+              <div class="Sign">
+                <a class="sign_in_text" href="/"><h1>Already have an account? Sign in</h1></a>
+              </div>
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

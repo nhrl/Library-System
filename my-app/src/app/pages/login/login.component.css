@@ -1,0 +1,17 @@
+.con {
+    border: 1px solid black;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text {
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 200px;
+}
+.register {
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,45 @@
+<div class="con">
+    <div id="editfrm" class="edit-container p-3">
+        <div *ngIf="isLoading;else update_form" class="load_container">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #update_form>
+          <div *ngIf="succeess;else show_form" class="success_container">
+            <div class="alert alert-success alert-dismissible fade show">
+              <strong>Success!</strong> Book has been edited successfully.
+            </div>
+            <div class="btn-container">
+              <a><div id="editclose" class="btn btn-primary mt-3" [routerLink]="['/dashboard/books']"  >Close</div></a>
+            </div>
+          </div>
+          <ng-template #show_form>
+            <form [formGroup]="bookform" (ngSubmit)="updateBook()">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Title</label>
+                  <input type="text" name="title" class="form-control" formControlName="title" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Publisher</label>
+                  <input type="text" name="publisher" class="form-control"  formControlName="publisher" placeholder="Publisher">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Authors</label>
+                  <input type="text" name="author" class="form-control"  formControlName="author" placeholder="Authors">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Year Publish</label>
+                  <input type="text" name="year" class="form-control"  formControlName="year_pub" placeholder="Year Publish">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Volume</label>
+                  <input type="text" name="volume" class="form-control" formControlName="volume" placeholder="Volume">
+                </div>
+                <div class="btn-container">
+                  <button type="submit" class="btn btn-primary mt-3" (click)="updateBook()">Edit</button>
+                  <a><div id="editclose" class="btn btn-primary mt-3" [routerLink]="['/dashboard/books']"  >Close</div></a>
+                </div>
+          </form>
+          </ng-template>
+        </ng-template>
+    </div>    
+</div>
